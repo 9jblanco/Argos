@@ -31,6 +31,7 @@ class BaseProcess(Process):
                  data_hub,
                  pipeline_name: str,
                  opt,
+                 **kwargs
                  ) -> None:
         super(BaseProcess, self).__init__()
 
