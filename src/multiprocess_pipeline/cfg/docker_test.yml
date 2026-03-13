@@ -1,0 +1,18 @@
+DockerTest:
+  producer:
+    ImageLoader:
+      image_path: "/videos/hall_items.mp4"
+      loader: Video
+      normalized_image_shape: [3, 608, 1088]
+
+  consumer:
+    Track:
+      arch: DLA+GhostPAN_mot_8class
+      load_model: "/models/DLA+DLAFusion_CBAM_mot.yml"
+      conf_thres: 0.4
+      track_buffer: 30
+
+  post:
+    IndiResultsVisual:
+      output_format: video
+      save_path: "/output/"
