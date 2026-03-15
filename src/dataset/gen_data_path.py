@@ -41,9 +41,16 @@ def gen_data_path(root_dir: str,
 
 
 if __name__ == '__main__':
-    gen_data_path(root_dir='D:/Library/Dataset',
-                  mot_path_in_root='AutoDataset/Experiment_02/Train/images',
-                  dataset_name='FuncTest',
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--root_dir', type=str, required=True)
+    parser.add_argument('--mot_path_in_root', type=str, required=True)
+    parser.add_argument('--dataset_name', type=str, required=True)
+    args = parser.parse_args()
+
+    gen_data_path(root_dir=args.root_dir,
+                  mot_path_in_root=args.mot_path_in_root,
+                  dataset_name=args.dataset_name,
                   save_dir=r'/src/dataset/data_path',
                   seq_folder_name='',
                   train_ratio=1.0,
