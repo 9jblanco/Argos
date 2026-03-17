@@ -2,7 +2,6 @@ import os
 import glob
 import math
 
-
 def gen_data_path(root_dir: str,
                   mot_path_in_root: str,
                   dataset_name: str,
@@ -39,20 +38,21 @@ def gen_data_path(root_dir: str,
         train.close(), half.close(), val.close()
         print(f'generation over')
 
-
 if __name__ == '__main__':
     import argparse
+
     parser = argparse.ArgumentParser()
     parser.add_argument('--root_dir', type=str, required=True)
     parser.add_argument('--mot_path_in_root', type=str, required=True)
     parser.add_argument('--dataset_name', type=str, required=True)
+    parser.add_argument('--save_dir', type=str, required=True)
     args = parser.parse_args()
 
     gen_data_path(root_dir=args.root_dir,
                   mot_path_in_root=args.mot_path_in_root,
                   dataset_name=args.dataset_name,
-                  save_dir=r'/src/dataset/data_path',
+                  save_dir=args.save_dir,
                   seq_folder_name='',
                   train_ratio=1.0,
-                  seq_endswith='',
-                  image_formate='png')
+                  seq_endswith='img1',
+                  image_formate='jpg')
